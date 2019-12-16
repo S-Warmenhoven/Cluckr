@@ -1,0 +1,8 @@
+<%- include("./partials/header") %>
+  <h1>All clucks</h1>
+  <ul>
+<% clucks.forEach((cluck, index) => { %>
+    <li><%=`${cluck.content} by ${cluck.username}`%></li>
+<% }) %>
+  </ul>
+<%- include("./partials/footer") %>
