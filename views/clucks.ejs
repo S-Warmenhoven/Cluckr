@@ -1,8 +1,50 @@
 <%- include("./partials/header") %>
-  <h1>All clucks</h1>
-  <ul>
-<% clucks.forEach((cluck, index) => { %>
-    <li><%=`${cluck.content} by ${cluck.username}`%></li>
-<% }) %>
-  </ul>
+<% 
+    if (clucks.length > 0) { 
+        for (let cluck of clucks) { 
+%>
+  <div class="card mb-4">
+    <div class="card-body">
+    <div class="d-flex">
+      <h3 class="card-title"><img src="https://images.unsplash.com/photo-1545531665-cf5f66c3d667?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="<%= cluck.username %>" class="img-circle team-logo rounded-circle mr-3 small" height="72px" width="72px"></h3>
+      <p><%= cluck.username %></p>
+      <p>       *</p>
+      <p>
+        <%=timeSince(cluck.createdAt)%>
+        <%function timeSince(time) {
+            const now = new Date(),
+              secondsPast = (now.getTime() - cluck.createdAt.getTime()) / 1000;
+            if(secondsPast < 60){
+              return parseInt(secondsPast) + 's ago';
+            }
+            if(secondsPast < 3600){
+              return parseInt(secondsPast/60) + 'm ago';
+            }
+            if(secondsPast <= 86400){
+              return parseInt(secondsPast/3600) + 'h ago';
+            }
+            if(secondsPast > 86400){
+                day = cluck.createdAt.getDate();
+                month = cluck.createdAt.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ","");
+                year = cluck.createdAt.getFullYear() == now.getFullYear() ? "" :  " " + cluck.createdAt.getFullYear();
+                return day + " " + month + year;
+            }
+        }%>
+        </p>
+    </div>
+      <p class="card-text"><%= cluck.content %></p>
+      <picture>
+            <source srcset="<%= cluck.image_url %>" type="image/svg+xml">
+            <img src="<%= cluck.image_url %>" class="img-fluid" alt="Responsive image">
+        </picture>
+    </div>
+  </div>
+<% } } else { %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title my-4">There are no clucks.</h5>
+      <a href="/clucks/new" class="btn btn-primary mt-3">New Clucks</a>
+    </div>
+  </div>
+  <% } %>
 <%- include("./partials/footer") %>

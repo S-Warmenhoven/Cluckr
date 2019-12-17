@@ -1,8 +1,13 @@
 <%- include("./partials/header") %>
   <h1>Sign in to Cluckr</h1>
+  <div class="container border mt-3 mr-3">
+  <h3>Username</h3>
   <form action="/sign_in" method="POST">
-    <input type="text" name="username"/>
-
+    <div class="form-group">
+    <input type="text" name="username" placeholder="e.g. Master_Clucker"/>
     <button type="submit">Sign In</button>
+    </div>
   </form>
-  <%- include("./partials/footer") %>
+  </div>
+<%- include("./partials/footer") %>
+

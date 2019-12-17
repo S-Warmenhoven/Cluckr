@@ -1,4 +1,4 @@
-// Update with your config settings.
+// Update with config settings.
 
 module.exports = {
 
@@ -11,10 +11,8 @@ module.exports = {
   migrations: {
     tableName: "migrations",
     directory: "./db/migrations"
-  },
-  seeds: {
-    directory: "./db/seeds"
   }
+  
 };
 
 

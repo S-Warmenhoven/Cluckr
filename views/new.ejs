@@ -1,7 +1,14 @@
 <%- include("./partials/header") %>
-  <form action="/clucks" method="POST">
-    <input type="text" name="content"/>
-
-    <button type="submit">Create Clucks</button>
-  </form>
+<form class="mt-4" action="/clucks" method="POST">
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control new-cluck-field" name="content" id="content" placeholder="e.g. I ran out of clucks to give!" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="image_url">Image Url</label>
+        <input type="text" class="form-control" name="image_url" id="image_url" placeholder="e.g. https://www.example.com/some.png">
+    </div>
+        <button type="submit" class="btn btn-outline-primary mt-4 new-cluck-button">Cluck!</button>
+    </div>
+</form>
 <%- include("./partials/footer") %>

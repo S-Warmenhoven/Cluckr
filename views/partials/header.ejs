@@ -5,20 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>Cluckr</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <%# The order of the scrips matters %>
+  <script src="/js/jquery-3.4.1.slim.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <nav>
-    <% if (username) { %>
-    <form action="/logout" method="POST">
-      <input type="hidden" name="_method" value="DELETE" />
-      <input type="submit" value="Logout" />
-    </form>
-    <% } else { %>
-    <form action="/sign_in" method="GET">
-      <input type="submit" value="sign_in" />
-    </form>
-    <% } %>
-    <a href="/">Home</a>
-    <a href="/clucks">Clucks</a>
-    <a href="/clucks/new">New Clucks</a>
-  </nav>
+
+  <div class="container-fluid mt-3">
+
+        <nav class="navbar-brand sticky-top navbar-light bg-white navbar-between border">
+            <div>
+                <a class="navbar-link" href="/clucks"><img class="avatar" alt="chicken-avatar" src="https://store.playstation.com/store/api/chihiro/00_09_000/container/CA/en/999/UP1710-CUSA09109_00-AV00000000000005/1535071256000/image?w=240&h=240&bg_color=000000&opacity=100&_version=00_09_000"></a>
+            </div>
+            <ul class="navbar-nav navbar-expand">
+                <li class="nav-item ml-3">
+                  <a class="navbar-link" href="/">Home</a>
+                </li>
+                <li class="nav-item ml-3">
+                  <a class="navbar-link" href="/clucks">Clucks</a>
+                </li>
+                <li class="nav-item ml-3">
+                  <a class="navbar-link" href="/clucks/new">Cluck!</a>
+                </li>  
+            </ul>
+            <% if (username) { %>
+                <p><%= `__${username}__` %></p>
+                <form action="/logout" method="POST">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <input type="submit" class="btn btn-secondary" value="Logout" />
+                </form>
+                <% } else { %>
+                <form action="/sign_in" method="GET">
+                  <input type="submit" class="btn btn-secondary" value="Sign In" />
+                </form>
+                <% } %> 
+        </nav>
+    <div class="container mt-3">  
+        
+        
+
+        

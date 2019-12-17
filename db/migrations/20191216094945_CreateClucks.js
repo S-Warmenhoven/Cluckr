@@ -1,11 +1,11 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable("clucks", table => {
-      table.bigIncrements("id").primary();// create an autoincrementing column named `id` - "id" SERIAL
+      table.bigIncrements("id").primary();
       table.string("username");
-      table.text("image_url"); // "title" VARCHAR(255)
-      table.text("content"); // "content" TEXT
-      table.timestamp("createdAt").defaultTo(knex.fn.now())
-      table.timestamp("updatedAt")
+      table.text("image_url"); 
+      table.text("content"); 
+      table.timestamp("createdAt").defaultTo(knex.fn.now());
+      table.timestamp("updatedAt");
     });
   };
   
