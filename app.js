@@ -13,9 +13,9 @@ const clucksRouter = require('./routes/clucks');
 app.set("view engine", "ejs");
 
 //use middleware:
-app.use(logger())
-app.use(cookieParser())
-app.use(express.urlencoded({extended: true}))
+app.use(logger());
+app.use(cookieParser());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(methodOverride((req, res) => {
@@ -23,22 +23,20 @@ app.use(methodOverride((req, res) => {
         const method = req.body._method
         delete req.body._method  
      return method
-}
-}))
+    };
+}));
 
 app.use((req, res, next) => {
     res.locals.username = req.cookies.username || ""
     next()
 });
 
-
 //Create Routers to access our server
-app.use("/clucks", clucksRouter)
-app.use("/", baseRouter)
-
+app.use("/clucks", clucksRouter);
+app.use("/", baseRouter);
 
 const PORT = process.env.PORT || 3000
 const DOMAIN = "localhost"
 app.listen(PORT, DOMAIN, () => {
     console.log(`Listening at http://${DOMAIN}:${PORT} in ${app.get('env')} environment`)
-})
+});

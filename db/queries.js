@@ -1,4 +1,4 @@
-const knex = require('./client')
+const knex = require('./client');
 
 const queries = {
     getAll() {
